@@ -1,0 +1,589 @@
+import { useEffect, useRef, useMemo } from "react";
+import Reveal from "reveal.js";
+import { marked } from "marked";
+import "reveal.js/dist/reveal.css";
+import "reveal.js/dist/theme/league.css";
+
+const slidesContent = `# 적응기간 성과 평가
+
+## AX Studio 1.0 Frontend 기여 요약
+
+제품 외부 공개/운영 가능 수준 달성  
++ 확장 가능한 구조/표준/자산화
+
+---
+
+# 한 줄 개요
+
+적응기간 동안 **AX Studio 1.0을 외부 공개 및 실제 운영이 가능한 제품 수준으로 완성하기 위한 프론트엔드 전반을 담당**하며,
+
+- ✓ 확장 가능한 UI 구조 수립
+- ✓ 비즈니스 로직 및 스키마 선행 설계
+- ✓ 백엔드 개발자와 병렬 개발 협업
+- ✓ **실서비스 연동을 고려한 프론트엔드 전환 준비 및 가이드 정리**
+- ✓ 문서화를 통한 조직 자산화
+
+---
+
+# 핵심 임팩트 요약
+
+---
+
+## 1. AX Studio 1.0 개발 기여
+
+제품 외부 공개를 목표로 **풀스택 개발** 
+
+---
+
+## 2. 확장 가능한 UI 구조 및 개발 기준 정리
+
+프론트엔드 관점에서 **확장 가능한 UI 구조 및 개발 기준 정리**
+
+---
+
+## 3. 병렬 개발 및 커뮤니케이션 비용 감소
+
+API 연동이 필요한 부분에서<br />**비즈니스 로직 및 스키마 선행 설계를 통해<br />
+개발 기간 단축(병렬 개발) 기반 마련**
+
+---
+
+## 4. 서비스 연동 단계의 개발 리스크 완화
+
+Fake API 기반 검증과 연동 가이드 정리
+
+---
+
+## 5. 개발 효율 및 지속 가능성 확보
+
+SI 업무 지원과 생산성 도구화를 통해 **조직 단위 개발 효율 및 지속 가능성 확보**
+
+---
+
+# 프론트엔드 아키텍처 및 UI 시스템 구축
+
+**AX Studio 1.0의 제품 운영을 전제로 한 프론트엔드 아키텍처와 공통 UI 시스템을 구축**
+
+---
+
+## 역할
+
+프론트엔드 구현 및 프론트엔드 아키텍처 구성
+
+---
+
+## 기준
+
+제품 런칭을 목표로 확정된 디자인 및 기능 정의 기준 적용
+
+---
+
+## 구현 범위
+
+- 공통 사용 컴포넌트·템플릿 설계 및 구현
+- 페이지 구현:
+    - 랜딩
+    - 개요
+    - 에이전트 목록/상세
+    - 요금
+    - 개인정보처리방침, 이용약관
+
+---
+
+## 핵심 성과
+
+**확장 가능한 공통 UI 시스템(Container, Layout) 기반 구축**
+
+---
+
+## 기타
+
+i18n 아키텍처 구조 반영 (현재 한국어 기준 운영)
+
+---
+
+# 비즈니스 로직 및 스키마 선행 설계
+
+**API 연동이 필요한 영역에서 스키마 선행 설계, 비즈니스 로직 작성·문서화하고,  
+백엔드 개발자와 병렬 작업을 수행함으로써 커뮤니케이션 비용 절감 및 개발 효율성 향상**
+
+---
+
+## 대상
+
+Agent / Category / Pricing 등
+
+---
+
+## 설계
+
+데이터 스키마 선행 설계
+
+---
+
+## 구현
+
+스키마 기반 비즈니스 로직 및 화면 구현
+
+---
+
+## 개발 방식
+
+Frontend-Driven 방식으로 프론트엔드·백엔드 병렬 개발
+
+---
+
+## 검증
+
+Fake API 기반 기능 및 UI 흐름 검증
+
+---
+
+## 정리
+
+실제 API·DB 연동 시 변경 지점 정리
+
+---
+
+## 문서화
+
+Migration Guide 및 관련 API·도메인 문서 작성
+
+---
+
+# 외부 프로젝트(SI) 및 조직 기여
+
+---
+
+## SI 업무 지원 (w/로건)
+
+**외부 고객사 대상 SI 업무를 지원하며, 납기 준수와 서비스 안정성을 확보하는 역할 수행**
+
+---
+
+### 한국열연 브로셔 프로젝트
+
+- 번역 데이터 적용 및 관련 기능 반영 완료
+- 웹앱 포팅 및 기능 보완을 통해 고객사 요구사항 충족
+
+---
+
+### 제일FA 프로젝트
+
+- 기존 코드 및 기능 분석 후 요청사항 반영
+- 서비스 영향 최소화를 고려한 안정적 수정 처리
+
+---
+
+## 서비스 안정성 관련 대응 (w/로건)
+
+- React / Next.js 주요 보안 취약점(CVE) 분석
+- 관련 패치 적용 및 라이브러리 업데이트 대응
+
+---
+
+## 개발 생산성 및 기술 자산화
+
+**단발성 SI 작업에 그치지 않고, 반복 업무를 줄이기 위한 생산성 도구와 문서를 조직 자산으로 정리**
+
+---
+
+### WebApp Generator 개발
+
+한국열연 브로셔 웹앱 포팅 과정에서 **WebApp Generator** 개발
+
+---
+
+### 자산화
+
+반복 작업 자동화를 통해 이후 유사 프로젝트에 재사용 가능한 도구로 자산화
+
+---
+
+### 문서화
+
+컴포넌트 렌더링 프로세스, 데이터 흐름, API Migration 가이드 등 문서화
+
+README 파일 작성
+
+---
+
+# 성장 방향 요약
+
+---
+
+## 목표
+
+AX Studio 및 AX Agent 개발 과정에서 이미 수행해 온 프론트엔드 역할을 중심으로,  
+**프론트엔드·백엔드 개발 경험과 AI Agent 구현 경험을 결합하여 AX 조직의 개발 경험(DX)을 정립하고  
+에이전트 제품 전반의 품질과 일관성을 높이는 데 기여**하고자 함.
+
+---
+
+## 강점
+
+기존 AI 웹서비스 및 Agent 구현 경험을 보유하고 있기에, 시행착오를 줄이고 AX의 제품 구조와 개발 단계에  
+적합한 DX 및 협업 방식을 **비교적 빠르게 제안·정리할 수 있다는 점이 강점**이라고 판단함.
+
+---
+
+## 기대 효과
+
+**기술적 안정성과 개발 효율의 확보는 기능 구현 리드타임 단축, 변경 비용 감소, 비즈니스 의사결정 속도 향상으로 이어지는 기반**이 됨.
+
+---
+
+# 단기 계획 (~3개월)
+
+---
+
+## 2-1. AX Studio 프론트엔드 개발 역할 유지 및 안정화
+
+**제품 개발 과정에서 프론트엔드 구현의 기준을 안정적으로 유지**
+
+---
+
+### 화면 구조 기준 유지
+
+AX Studio 전반의 화면 구조, 페이지 구성, 공통 컴포넌트 사용 방식 기준 유지
+
+---
+
+### 일관된 방식 반영
+
+누적된 구현 히스토리를 바탕으로 신규 기능 및 변경 사항을 일관된 방식으로 반영
+
+---
+
+### 비용 최소화
+
+프론트엔드 변경으로 인한 불필요한 재작업 및 커뮤니케이션 비용 최소화
+
+---
+
+## 2-2. 프론트엔드 개발 기준 및 DX 초안 정리
+
+**AX 조직에 적합한 개발 기준의 초안을 정리**
+
+---
+
+### 책임 범위 명확화
+
+프론트엔드 책임 범위(화면, 상태, 사용자 인터랙션) 명확화
+
+---
+
+### Frontend-Driven 개발 방식 정리
+
+스키마 선행 정의, Mock/Fake API 활용 등 Frontend-Driven 개발 방식 정리
+
+---
+
+### 병렬 개발 작업 흐름 수립
+
+프론트엔드–백엔드 병렬 개발이 가능한 작업 흐름 초안 수립  
+→ 기능 단위 구현 리드타임 단축을 목표로 함
+
+---
+
+# 중기 계획 (~6개월)
+
+---
+
+## 3-1. 프론트엔드–백엔드 간 인터페이스 기준 정립
+
+**인터페이스 기준을 정리하고 합의 가능한 형태로 정착**시키는 데 기여함.
+
+---
+
+### API 기준 정리
+
+API 스펙, 요청·응답 구조, 에러 처리 방식에 대한 기준 정리
+
+---
+
+### Migration Guide
+
+Migration Guide 및 관련 문서를 통해 변경 시 혼선 최소화
+
+---
+
+### 병렬 개발 협업 구조
+
+신규 기능 개발 시 병렬 개발이 가능한 협업 구조 유지  
+→ 기능 추가 및 변경 시 커뮤니케이션 비용 감소
+
+---
+
+## 3-2. AX Agent 및 Agent Builder 개발 맥락 기여
+
+**기존에 보유한 Agentic AI 구현 경험을 실제 개발 논의와 설계 판단에 연결**함.
+
+---
+
+### AI 구현 경험 공유
+
+STT, LLM, TTS, VAD 기반 AI 웹서비스 및 Agent 구현 경험 공유
+
+---
+
+### 실무 관점 의견 제공
+
+Agent 실행 흐름, 상태 관리, 사용자 인터랙션 설계에 대한 실무 관점 의견 제공
+
+---
+
+### 프론트엔드·UX 관점 피드백
+
+Agent Builder 사용 흐름에 대한 프론트엔드·UX 관점 피드백 제공
+
+---
+
+### 전문성 축적
+
+이 과정을 통해 **Agent 기반 UI 및 인터페이스 설계에 대한 전문성을 조직 내에서 축적**하는 것을 목표로 함.
+
+---
+
+# 중·장기 계획 (~12개월)
+
+---
+
+## 4-1. 풀스택 관점의 에이전트 제품 품질 기여
+
+**에이전트 개발 과정 전반을 고려한 품질 개선에 기여**함.
+
+---
+
+### 설계·구현 간 괴리 최소화
+
+프론트엔드–백엔드 경계를 모두 이해한 상태에서 설계·구현 간 괴리 최소화
+
+---
+
+### 기술적 피드백 제공
+
+Agent 실행 로직, 데이터 흐름, UI 인터랙션 간 정합성 관점의 기술적 피드백 제공
+
+---
+
+### 품질 판단 기여
+
+기능 단위가 아닌, 사용자 경험과 시스템 동작을 함께 고려한 품질 판단 기여
+
+---
+
+### 역할 강화
+
+이를 통해 **AX 조직 내에서 에이전트 개발에 있어 풀스택 관점의 기술적 판단이 가능한 개발자로서의 역할을 강화**하고자 함.
+
+---
+
+## 4-2. 개발 자산 및 경험 축적
+
+**AX 조직 내에 개발 기준과 맥락이 지속적으로 누적되는 구조를 유지**함.
+
+---
+
+### 문서화
+
+프론트엔드·백엔드·Agent 개발 경험, 설계 판단, 구현 패턴의 문서화
+
+---
+
+### 개발 자산 유지
+
+신규 인원이 합류하더라도 빠르게 맥락을 이해할 수 있는 개발 자산 유지
+
+---
+
+### 온보딩 비용 절감
+
+공통 컴포넌트 및 개발 기준 문서를 통해 온보딩 비용 절감에 기여`;
+
+type SlideItem = {
+	title: string;
+	content: string;
+};
+
+type SlideGroup = {
+	title: string;
+	content: string;
+	isVerticalGroup: true;
+	children: SlideItem[];
+};
+
+type Slide = SlideItem | SlideGroup;
+
+function Presentation() {
+	const revealRef = useRef<HTMLDivElement>(null);
+	const revealInstanceRef = useRef<Reveal.Api | null>(null);
+
+	// 마크다운을 파싱하여 vertical slides 구조로 변환하고 HTML로 변환
+	const slidesStructure = useMemo(() => {
+		const slides = slidesContent
+			.split(/\n---\n/)
+			.filter((slide) => slide.trim());
+		const result: Slide[] = [];
+
+		let currentGroup: SlideGroup | null = null;
+
+		slides.forEach((slide) => {
+			const lines = slide.trim().split("\n");
+			const firstLine = lines[0] || "";
+			const isMainTitle =
+				firstLine.startsWith("# ") && !firstLine.startsWith("## ");
+			const isSubTitle =
+				firstLine.startsWith("## ") && !firstLine.startsWith("### ");
+
+			// 메인 제목이면 새 그룹 시작
+			if (isMainTitle) {
+				// 이전 그룹이 있으면 저장
+				if (currentGroup !== null) {
+					if (currentGroup.children.length > 0) {
+						result.push(currentGroup);
+					}
+				}
+				// 새 그룹 시작
+				currentGroup = {
+					title: firstLine.replace(/^# /, ""),
+					content: slide.trim(),
+					isVerticalGroup: true,
+					children: [],
+				};
+			} else if (isSubTitle) {
+				if (currentGroup !== null) {
+					// 서브 제목이면 현재 그룹에 추가
+					currentGroup.children.push({
+						title: firstLine.replace(/^## /, ""),
+						content: slide.trim(),
+					});
+				} else {
+					// 그룹이 없으면 일반 슬라이드로 추가
+					result.push({
+						title: firstLine.replace(/^## /, ""),
+						content: slide.trim(),
+					});
+				}
+			} else {
+				if (currentGroup !== null) {
+					// 서브 슬라이드 추가
+					currentGroup.children.push({
+						title: "",
+						content: slide.trim(),
+					});
+				} else {
+					// 그룹이 없으면 일반 슬라이드로 추가
+					result.push({
+						title: firstLine.replace(/^#+ /, ""),
+						content: slide.trim(),
+					});
+				}
+			}
+		});
+
+		// 마지막 그룹 저장
+		if (currentGroup) {
+			const group: SlideGroup = currentGroup;
+			if (group.children.length > 0) {
+				result.push(group);
+			}
+		}
+
+		return result;
+	}, []);
+
+	// 타입 가드 함수
+	const isSlideGroup = (slide: Slide): slide is SlideGroup => {
+		return "isVerticalGroup" in slide && slide.isVerticalGroup === true;
+	};
+
+	useEffect(() => {
+		if (revealRef.current && !revealInstanceRef.current) {
+			// reveal.js 초기화를 약간 지연시켜 DOM이 완전히 렌더링된 후 실행
+			const timer = setTimeout(() => {
+				if (revealRef.current && !revealInstanceRef.current) {
+					revealInstanceRef.current = new Reveal(revealRef.current, {
+						hash: true,
+						controls: true,
+						progress: true,
+						center: true,
+						touch: true,
+						loop: false,
+						transition: "slide",
+						// Presentation size optimization
+						width: 1280,
+						height: 720,
+						margin: 0.04,
+						minScale: 0.2,
+						maxScale: 2.0,
+					});
+
+					revealInstanceRef.current.initialize();
+				}
+			}, 100);
+
+			return () => {
+				clearTimeout(timer);
+				if (revealInstanceRef.current) {
+					revealInstanceRef.current.destroy();
+					revealInstanceRef.current = null;
+				}
+			};
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
+	return (
+		<div className="reveal-wrapper" style={{ height: "100vh", width: "100vw" }}>
+			<div ref={revealRef} className="reveal">
+				<div className="slides">
+					{slidesStructure.map((slide) => {
+						const slideKey = slide.title || slide.content.substring(0, 50);
+						if (isSlideGroup(slide) && slide.children.length > 0) {
+							// Vertical slides 그룹
+							return (
+								<section key={slideKey}>
+									{/* 메인 슬라이드 */}
+									<section
+										// biome-ignore lint/security/noDangerouslySetInnerHtml: 마크다운을 HTML로 변환하여 렌더링
+										dangerouslySetInnerHTML={{
+											__html: marked.parse(slide.content),
+										}}
+									/>
+									{/* Vertical slides */}
+									{slide.children.map((child) => {
+										const childKey =
+											child.title || child.content.substring(0, 50);
+										return (
+											<section
+												key={childKey}
+												// biome-ignore lint/security/noDangerouslySetInnerHtml: 마크다운을 HTML로 변환하여 렌더링
+												dangerouslySetInnerHTML={{
+													__html: marked.parse(child.content),
+												}}
+											/>
+										);
+									})}
+								</section>
+							);
+						} else {
+							// 일반 슬라이드
+							return (
+								<section
+									key={slideKey}
+									// biome-ignore lint/security/noDangerouslySetInnerHtml: 마크다운을 HTML로 변환하여 렌더링
+									dangerouslySetInnerHTML={{
+										__html: marked.parse(slide.content),
+									}}
+								/>
+							);
+						}
+					})}
+				</div>
+			</div>
+		</div>
+	);
+}
+
+export default Presentation;
