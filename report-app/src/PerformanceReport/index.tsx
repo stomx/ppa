@@ -11,9 +11,9 @@ const PerformanceReport: React.FC = () => {
             <Header />
             <main className="mt-8 space-y-8">
                 <Overview />
+                <Impact />
                 <Development />
                 <ExternalProjects />
-                <Impact />
             </main>
         </div>
     );

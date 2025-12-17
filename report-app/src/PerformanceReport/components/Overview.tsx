@@ -1,28 +1,19 @@
 import React from 'react';
-import { BriefcaseIcon } from './Icons';
+import { TargetIcon } from './Icons';
 
 const Overview: React.FC = () => {
     return (
-        <section className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden break-inside-avoid">
-            <div className="bg-blue-600 p-4 flex items-center gap-3">
-                <BriefcaseIcon className="text-white w-6 h-6" />
-                <h2 className="text-lg font-bold text-white">1. 개요</h2>
+        <section className="bg-white rounded-xl shadow-md border-l-4 border-blue-600 p-6 md:p-8 break-inside-avoid">
+            <div className="flex items-center gap-3 mb-4">
+                <TargetIcon className="w-8 h-8 text-blue-600" />
+                <h2 className="text-xl font-bold text-slate-900">0. 한 줄 개요 (Overview)</h2>
             </div>
-            <div className="p-6 md:p-8 text-slate-700 leading-relaxed space-y-4">
-                <p>
-                    적응기간 동안{' '}
-                    <strong className="text-blue-700 bg-blue-50 px-1 rounded">
-                        AX Studio 1.0을 외부 공개 및 운영 가능한 수준으로 완성하는 데 필요한 프론트엔드 전반 담당
-                    </strong>
-                    .
-                </p>
-                <p>
-                    핵심 사용자 화면 구현을 기반으로, <strong className="font-bold text-slate-900">확장 가능한 UI 구조 수립</strong>,{' '}
-                    <strong className="font-bold text-slate-900">핵심 비즈니스 도메인 설계 검증</strong>,{' '}
-                    <strong className="font-bold text-slate-900">실서비스 전환 기준 정리</strong>,{' '}
-                    <strong className="font-bold text-slate-900">문서화를 통한 조직 자산화</strong> 함께 수행.
-                </p>
-            </div>
+            <p className="text-lg text-slate-700 leading-relaxed">
+                적응기간 동안 <strong className="font-bold text-blue-700 bg-blue-50 px-1 rounded">AX Studio 1.0을 외부 공개 및 실제 운영이 가능한 제품 수준으로 완성하기 위한 프론트엔드 전반을 담당</strong>하며,
+                확장 가능한 UI 구조 수립, 비즈니스 로직 및 스키마 선행 설계, 백엔드 개발자와 병렬 개발 협업,
+                <strong className="font-bold text-slate-900"> 실서비스 연동을 고려한 프론트엔드 전환 준비 및 가이드 정리</strong>,
+                문서화를 통한 조직 자산화를 수행함.
+            </p>
         </section>
     );
 };
