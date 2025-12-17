@@ -3,7 +3,7 @@ import { ZapIcon } from './Icons';
 
 const Impact: React.FC = () => {
     return (
-        <section className="bg-slate-900 rounded-2xl p-8 text-white shadow-xl break-inside-avoid mt-8">
+        <section className="bg-sky-950 rounded-2xl p-8 text-white shadow-xl break-inside-avoid mt-8">
             <div className="flex items-center gap-3 mb-6 border-b border-slate-700 pb-4">
                 <ZapIcon className="w-6 h-6 text-yellow-400" />
                 <h2 className="text-2xl font-bold">1. 핵심 임팩트 요약</h2>
